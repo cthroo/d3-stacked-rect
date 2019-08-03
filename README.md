@@ -1,1 +1,1 @@
-# d3-parallel-table-chart
+# d3-stacked-rect
