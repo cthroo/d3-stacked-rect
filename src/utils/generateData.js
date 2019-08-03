@@ -16,10 +16,13 @@ import {
   over,
   lensProp,
   keys,
+  lensIndex,
+  assocPath,
 } from 'ramda';
 
 export default data => {
   const rawRectList = compose(
+    over(lensIndex(0), assocPath(['y'], 0)),
     map(
       compose(
         applySpec({
