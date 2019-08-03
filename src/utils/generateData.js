@@ -15,10 +15,11 @@ import {
   apply,
   over,
   lensProp,
+  keys,
 } from 'ramda';
 
 export default data => {
-  const result = compose(
+  const rawRectList = compose(
     map(
       compose(
         applySpec({
@@ -33,7 +34,7 @@ export default data => {
     ),
     values,
     prop('titles'),
-  )(data);
+  );
 
   /* FP Written by ZH */
   const newY = converge(scan(add), [
@@ -57,5 +58,15 @@ export default data => {
   );
 
   /* FP Written by ZH */
-  return updateY(result);
+  return applySpec({
+    rectData: compose(
+      updateY,
+      rawRectList,
+    ),
+    titles: compose(
+      keys,
+      prop('titles'),
+    ),
+    subTitles: compose(prop('subTitles')),
+  })(data);
 };

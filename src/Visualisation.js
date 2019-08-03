@@ -10,9 +10,9 @@ function Visualisation(props) {
     const svgContainer = d3.select(visEl.current);
     const colorValue = getRandomColor();
 
-    const jsonRectangles = generatedata(props.data);
-    console.log(jsonRectangles);
-    const formatedData = jsonRectangles.map((rec, index) => {
+    const {rectData} = generatedata(props.data);
+    console.log(rectData);
+    const formatedData = rectData.map((rec, index) => {
       const opacity = (index * 10 + 20) / 100 > 1 ? 1 : (index * 10 + 20) / 100;
       return {
         ...rec,
