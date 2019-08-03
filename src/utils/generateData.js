@@ -39,7 +39,7 @@ export default data => {
     prop('titles'),
   );
 
-  /* FP Written by ZH */
+  /* FP Written by ZH start */
   const newY = converge(scan(add), [
     compose(
       prop('y'),
@@ -59,8 +59,8 @@ export default data => {
     map(apply(over(lensProp('y')))),
     dataWithYUpdater,
   );
+  /* FP Written by ZH finish */
 
-  /* FP Written by ZH */
   return applySpec({
     rectData: compose(
       updateY,
