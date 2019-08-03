@@ -7,9 +7,14 @@ import {
   always,
   values,
   identity,
-  sum,
-  props,
-  assocPath,
+  converge,
+  scan,
+  head,
+  pluck,
+  zip,
+  apply,
+  over,
+  lensProp,
 } from 'ramda';
 
 export default data => {
@@ -22,26 +27,35 @@ export default data => {
           height: identity,
           width: always('100%'),
         }),
-        add(100),
-        a => a * 10,
+        add(20),
+        a => a * 5,
       ),
     ),
     values,
     prop('titles'),
   )(data);
 
-  const getSumOfYandHeight = element => sum(props(['y', 'height'])(element));
+  /* FP Written by ZH */
+  const newY = converge(scan(add), [
+    compose(
+      prop('y'),
+      head,
+    ),
+    pluck('height'),
+  ]);
+  const dataWithYUpdater = converge(zip, [
+    compose(
+      map(always),
+      newY,
+    ),
+    identity,
+  ]);
 
-  /* Imperitive coding start */
-  let accValue = 0;
-  return result.map((element, index) => {
-    if (index === 0) {
-      accValue = getSumOfYandHeight(element);
-    } else {
-      assocPath(['y'], accValue)(element);
-      accValue = getSumOfYandHeight(element);
-    }
-    return element;
-  });
-  /* Imperitive coding finish */
+  const updateY = compose(
+    map(apply(over(lensProp('y')))),
+    dataWithYUpdater,
+  );
+
+  /* FP Written by ZH */
+  return updateY(result);
 };
