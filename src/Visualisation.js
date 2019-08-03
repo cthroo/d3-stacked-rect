@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import * as d3 from 'd3';
 import getRandomColor from './utils/getRandomColor';
+import generatedata from './utils/generateData';
 import './Visualisation.css';
 
 function Visualisation(props) {
@@ -9,45 +10,8 @@ function Visualisation(props) {
     const svgContainer = d3.select(visEl.current);
     const colorValue = getRandomColor();
 
-    const jsonRectangles = [
-      {
-        x_axis: 10,
-        y_axis: 10,
-        height: 50,
-        width: '100%',
-      },
-      {
-        x_axis: 10,
-        y_axis: 60,
-        height: 50,
-        width: '100%',
-      },
-      {
-        x_axis: 10,
-        y_axis: 110,
-        height: 100,
-        width: '100%',
-      },
-      {
-        x_axis: 10,
-        y_axis: 210,
-        height: 100,
-        width: '100%',
-      },
-      {
-        x_axis: 10,
-        y_axis: 310,
-        height: 140,
-        width: '100%',
-      },
-      {
-        x_axis: 10,
-        y_axis: 450,
-        height: 140,
-        width: '100%',
-      },
-    ];
-
+    const jsonRectangles = generatedata(props.data);
+    console.log(jsonRectangles);
     const formatedData = jsonRectangles.map((rec, index) => {
       const opacity = (index * 10 + 20) / 100 > 1 ? 1 : (index * 10 + 20) / 100;
       return {
@@ -65,10 +29,10 @@ function Visualisation(props) {
 
     rectangles
       .attr('x', function(d) {
-        return d.x_axis;
+        return d.x;
       })
       .attr('y', function(d) {
-        return d.y_axis;
+        return d.y;
       })
       .attr('height', function(d) {
         return d.height;
