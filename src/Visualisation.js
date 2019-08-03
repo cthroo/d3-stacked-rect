@@ -28,24 +28,13 @@ function Visualisation(props) {
       .append('rect');
 
     rectangles
-      .attr('x', function(d) {
-        return d.x;
-      })
-      .attr('y', function(d) {
-        return d.y;
-      })
-      .attr('height', function(d) {
-        return d.height;
-      })
-      .attr('width', function(d) {
-        return d.width;
-      })
-      .style('fill', function(d) {
-        return d.color;
-      })
-      .style('opacity', function(d) {
-        return d.opacity;
-      });
+      .attr('x', d => d.x)
+      .attr('y', d => d.y)
+      .attr('height', d => d.height)
+      .attr('width', d => d.width)
+      .attr('class', () => 'rect-style')
+      .style('fill', d => d.color)
+      .style('opacity', d => d.opacity);
   }, props.data);
 
   return (
