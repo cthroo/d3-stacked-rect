@@ -1,6 +1,6 @@
 {
-  "name": "d3-stacked-react",
-  "version": "0.2.0",
+  "name": "d3-stacked-rect",
+  "version": "0.3.0",
   "dependencies": {
     "d3": "^5.9.7",
     "ramda": "^0.26.1",
@@ -9,6 +9,7 @@
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.27"
   },
+  "main": "src/App.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
