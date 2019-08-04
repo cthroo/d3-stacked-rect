@@ -55,6 +55,12 @@ Note: if associated title field in subTitles is empty, it won't render the subTi
 
 Set the height of of the SVG.
 
+## color (optional)
+
+#### `color`: PropTypes.string
+
+Set the color of of the SVG, should be a hash string like '#96cc66', if not given, will use random color
+
 ## License
 
 MIT
