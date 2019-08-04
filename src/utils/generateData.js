@@ -33,7 +33,7 @@ export default data => {
           x: always(0),
           y: identity,
           height: identity,
-          width: always('100%'),
+          width: always(300),
         }),
         add(20),
         a => a * 5,

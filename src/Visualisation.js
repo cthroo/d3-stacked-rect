@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {head, keys} from 'ramda';
+import {head, keys, values, concat} from 'ramda';
 import * as d3 from 'd3';
 import getRandomColor from './utils/getRandomColor';
 import generatedata from './utils/generateData';
@@ -23,13 +23,14 @@ function Visualisation(props) {
       };
     });
 
-    const rectangles = svgContainer
-      .selectAll('rect')
+    const container = svgContainer
+      .selectAll('g')
       .data(formatedData)
       .enter()
-      .append('rect');
+      .append('g');
 
-    rectangles
+    container
+      .append('rect')
       .attr('x', d => d.x)
       .attr('y', d => d.y)
       .attr('height', d => d.height)
@@ -38,17 +39,18 @@ function Visualisation(props) {
       .style('fill', d => d.color)
       .style('opacity', d => d.opacity);
 
-    const titleText = svgContainer
-      .selectAll('text')
-      .data(formatedData)
-      .enter()
-      .append('text');
-
-    titleText
+    container
+      .append('text')
       .attr('x', d => d.x)
-      .attr('y', d => d.y)
-      .style('font-size', 24)
-      .text(d => head(keys(d.title)));
+      .attr('y', d => d.y + d.height / 2)
+      .style('font-size', 18)
+      .attr('dy', '.35em')
+      .text(d =>
+        head(values(d.title))
+          ? concat(head(keys(d.title)), `(${head(values(d.title))})`)
+          : head(values(d.title)),
+      )
+      .attr('transform', d => 'translate(' + 10 + ',' + 0 + ')');
   }, props.data);
 
   return (
