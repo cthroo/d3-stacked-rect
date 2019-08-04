@@ -10,10 +10,7 @@ function Visualisation(props) {
   useEffect(() => {
     const svgContainer = d3.select(visEl.current);
     const colorValue = getRandomColor();
-
     const rectData = generatedata(props.data);
-    console.log(rectData);
-
     const formatedData = rectData.map((rec, index) => {
       const opacity = (index * 10 + 20) / 100 > 1 ? 1 : (index * 10 + 20) / 100;
       return {
