@@ -2,7 +2,7 @@
 
 <big><h1 align="center"> Draw d3 stacked rect SVG based on their weights</h1></big>
 
-![d3 stacked rect](example/example.png =200\*376)
+![d3 stacked rect](example/example.png)
 
 ## Installation
 
