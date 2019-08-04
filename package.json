@@ -1,7 +1,6 @@
 {
-  "name": "d3-parallel-table-chart",
+  "name": "d3-stacked-react",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "d3": "^5.9.7",
     "ramda": "^0.26.1",
@@ -20,11 +19,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -33,5 +28,17 @@
   },
   "devDependencies": {
     "prettier": "^1.18.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cthroo/d3-stacked-rect"
+  },
+  "keywords": ["d3", "rect", "react-d3"],
+  "files": ["dist"],
+  "author": "Robert Chang <cht8687@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cthroo/d3-stacked-rect"
+  },
+  "homepage": "https://github.com/cthroo/d3-stacked-rect#readme"
 }
