@@ -15,9 +15,13 @@ import {
   apply,
   over,
   lensProp,
-  keys,
   lensIndex,
   assocPath,
+  pipe,
+  toPairs,
+  objOf,
+  zipWith,
+  merge,
 } from 'ramda';
 
 export default data => {
@@ -60,16 +64,23 @@ export default data => {
     dataWithYUpdater,
   );
   /* FP Written by ZH finish */
+  const titleData = compose(
+    pipe(
+      toPairs,
+      map(
+        compose(
+          objOf('title'),
+          apply(objOf),
+        ),
+      ),
+    ),
+    prop('subTitles'),
+  )(data);
 
-  return applySpec({
-    rectData: compose(
-      updateY,
-      rawRectList,
-    ),
-    titles: compose(
-      keys,
-      prop('titles'),
-    ),
-    subTitles: compose(prop('subTitles')),
-  })(data);
+  const rectData = compose(
+    updateY,
+    rawRectList,
+  )(data);
+
+  return zipWith(merge, rectData, titleData);
 };

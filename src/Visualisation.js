@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import {head, keys} from 'ramda';
 import * as d3 from 'd3';
 import getRandomColor from './utils/getRandomColor';
 import generatedata from './utils/generateData';
@@ -10,8 +11,9 @@ function Visualisation(props) {
     const svgContainer = d3.select(visEl.current);
     const colorValue = getRandomColor();
 
-    const {rectData} = generatedata(props.data);
+    const rectData = generatedata(props.data);
     console.log(rectData);
+
     const formatedData = rectData.map((rec, index) => {
       const opacity = (index * 10 + 20) / 100 > 1 ? 1 : (index * 10 + 20) / 100;
       return {
@@ -35,12 +37,24 @@ function Visualisation(props) {
       .attr('class', () => 'rect-style')
       .style('fill', d => d.color)
       .style('opacity', d => d.opacity);
+
+    const titleText = svgContainer
+      .selectAll('text')
+      .data(formatedData)
+      .enter()
+      .append('text');
+
+    titleText
+      .attr('x', d => d.x)
+      .attr('y', d => d.y)
+      .style('font-size', 24)
+      .text(d => head(keys(d.title)));
   }, props.data);
 
   return (
     <>
       <div className="svg-container">
-        <svg height="500">
+        <svg height={700}>
           <g ref={visEl} />
         </svg>
       </div>
