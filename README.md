@@ -1,8 +1,8 @@
 # d3-stacked-rect
 
-<big><h1 align="center">d3 stacked rect component based on their weights</h1></big>
+<big><h1 align="center"> Draw d3 stacked rect SVG based on their weights</h1></big>
 
-![d3 stacked rect](example/example.png)
+![d3 stacked rect](example/example.png =200\*376)
 
 ## Installation
 
@@ -17,7 +17,7 @@ $ npm install --save d3-stacked-react
 Below is the example of custom components:
 
 ```js
-<D3StackedRect data={data} height={700} />
+<D3StackedRect data={data} height={700} color="#96cc66" />
 ```
 
 ## Options
