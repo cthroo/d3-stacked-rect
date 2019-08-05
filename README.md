@@ -78,7 +78,7 @@ yarn global add parcel-bundler
 $ git clone git@github.com:cthroo/d3-stacked-rect.git
 $ cd d3-stacked-rect
 $ npm install
-$ npm run dev
+$ npm run start
 ```
 
 Then
