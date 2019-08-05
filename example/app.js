@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Visualisation from '../src/index';
+import Visualisation from '../dist/index';
 import mockData from './mockData';
 
 var mount = document.getElementById('app');
