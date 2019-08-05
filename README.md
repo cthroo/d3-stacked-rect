@@ -61,6 +61,32 @@ Set the height of of the SVG.
 
 Set the color of of the SVG, should be a hash string like '#96cc66', if not given, will use random color
 
+## Development
+
+This project use Parcel. If you hasn't install it, you might need install Parcel first.
+
+```
+npm install -g parcel-bundler
+
+or
+
+yarn global add parcel-bundler
+
+```
+
+```
+$ git clone git@github.com:cthroo/d3-stacked-rect.git
+$ cd d3-stacked-rect
+$ npm install
+$ npm run dev
+```
+
+Then
+
+```
+open http://localhost:1234
+
 ## License
 
 MIT
+```
